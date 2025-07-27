@@ -36,7 +36,13 @@
   }
 
   .btn-primary {
-    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+    @apply text-white focus:ring-primary-500;
+    background-color: #513587;
+  }
+
+  .btn-primary:hover {
+    background-color: #A7AAFF;
+    color: #2C3E50;
   }
 
   .btn-secondary {
@@ -125,7 +131,8 @@
 
   /* Sidebar styles */
   .sidebar {
-    @apply w-64 bg-primary-800 min-h-screen flex flex-col;
+    @apply w-64 min-h-screen flex flex-col;
+    background-color: #513587;
   }
 
   .sidebar-nav {
@@ -133,11 +140,17 @@
   }
 
   .sidebar-link {
-    @apply flex items-center px-3 py-2 text-sm font-medium text-white rounded-md hover:bg-primary-700 hover:text-white transition-colors duration-200;
+    @apply flex items-center px-3 py-2 text-sm font-medium text-white rounded-md transition-colors duration-200;
+  }
+
+  .sidebar-link:hover {
+    background-color: #A7AAFF;
+    color: #2C3E50;
   }
 
   .sidebar-link.active {
-    @apply bg-primary-700 text-white;
+    background-color: #A7AAFF;
+    color: #2C3E50;
   }
 
   /* Header styles */

@@ -1,6 +1,26 @@
 export const colors = {
-  // Primary colors - Dark purple theme from the UI
+  // Primary colors - Deep purple theme from the UI
   primary: {
+    50: '#f3f0ff',
+    100: '#e5dbff',
+    200: '#d1bfff',
+    300: '#b794ff',
+    400: '#9f5fff',
+    500: '#8b3dff',
+    600: '#7c2dff',
+    700: '#6b21a8',
+    800: '#581c87',
+    900: '#4c1d95',
+    950: '#2e1065',
+    main: '#513587',
+    hover: {
+      background: '#A7AAFF',
+      text: '#2C3E50'
+    }
+  },
+
+  // Secondary colors - Deep purple for highlights
+  secondary: {
     50: '#f5f3ff',
     100: '#ede9fe',
     200: '#ddd6fe',
@@ -12,20 +32,6 @@ export const colors = {
     800: '#5b21b6',
     900: '#4c1d95',
     950: '#2e1065'
-  },
-
-  // Secondary colors - Light purple for highlights
-  secondary: {
-    50: '#faf5ff',
-    100: '#f3e8ff',
-    200: '#e9d5ff',
-    300: '#d8b4fe',
-    400: '#c084fc',
-    500: '#a855f7',
-    600: '#9333ea',
-    700: '#7c3aed',
-    800: '#6b21a8',
-    900: '#581c87'
   },
 
   // Accent colors - Green for success states
