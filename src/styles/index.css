@@ -12,7 +12,7 @@
     @apply bg-background-primary text-text-primary;
   }
 
-  /* Focus styles for accessibility */
+  /* Enhanced focus styles for accessibility */
   *:focus {
     @apply outline-none ring-2 ring-primary-500 ring-offset-2;
   }
@@ -26,13 +26,39 @@
   .skip-link:focus {
     @apply top-6;
   }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn {
+      @apply border-2 border-current;
+    }
+
+    .input {
+      @apply border-2 border-current;
+    }
+
+    .sidebar-link {
+      @apply border-2 border-white;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
 
-  /* Button styles */
+  /* Button styles with improved accessibility */
   .btn {
     @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    min-height: 44px;
+    /* WCAG minimum touch target size */
   }
 
   .btn-primary {
@@ -43,6 +69,11 @@
   .btn-primary:hover {
     background-color: #A7AAFF;
     color: #2C3E50;
+  }
+
+  .btn-primary:focus {
+    background-color: #513587;
+    color: white;
   }
 
   .btn-secondary {
@@ -61,30 +92,34 @@
     @apply bg-danger text-white hover:bg-red-600 focus:ring-danger;
   }
 
-  /* Input styles */
+  /* Input styles with improved accessibility */
   .input {
     @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500;
+    min-height: 44px;
+    /* WCAG minimum touch target size */
   }
 
   .input-error {
     @apply border-danger focus:ring-danger focus:border-danger;
   }
 
-  /* Status badge styles */
+  /* Status badge styles with improved contrast */
   .badge {
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    min-height: 24px;
+    /* Ensure minimum touch target */
   }
 
   .badge-success {
-    @apply bg-accent-100 text-accent-800;
+    @apply bg-green-100 text-green-800;
   }
 
   .badge-warning {
-    @apply bg-warning-100 text-warning-800;
+    @apply bg-yellow-100 text-yellow-800;
   }
 
   .badge-info {
-    @apply bg-info-100 text-info-800;
+    @apply bg-blue-100 text-blue-800;
   }
 
   .badge-pending {
@@ -104,7 +139,7 @@
     @apply px-6 py-4;
   }
 
-  /* Table styles */
+  /* Table styles with improved accessibility */
   .table {
     @apply min-w-full divide-y divide-gray-200;
   }
@@ -114,7 +149,9 @@
   }
 
   .table-header th {
-    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider;
+    min-height: 44px;
+    /* WCAG minimum touch target */
   }
 
   .table-body {
@@ -127,9 +164,11 @@
 
   .table-cell {
     @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+    min-height: 44px;
+    /* WCAG minimum touch target */
   }
 
-  /* Sidebar styles */
+  /* Sidebar styles with improved accessibility */
   .sidebar {
     @apply w-64 min-h-screen flex flex-col;
     background-color: #513587;
@@ -141,6 +180,8 @@
 
   .sidebar-link {
     @apply flex items-center px-3 py-2 text-sm font-medium text-white rounded-md transition-colors duration-200;
+    min-height: 44px;
+    /* WCAG minimum touch target */
   }
 
   .sidebar-link:hover {
@@ -151,6 +192,13 @@
   .sidebar-link.active {
     background-color: #A7AAFF;
     color: #2C3E50;
+  }
+
+  .sidebar-link:focus {
+    background-color: #A7AAFF;
+    color: #2C3E50;
+    outline: 2px solid white;
+    outline-offset: 2px;
   }
 
   /* Header styles */
@@ -165,6 +213,21 @@
 
   .content-wrapper {
     @apply p-6;
+  }
+
+  /* Loading states */
+  .loading-spinner {
+    @apply animate-spin;
+  }
+
+  /* Screen reader only text */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+
+  /* Focus visible for better keyboard navigation */
+  .focus-visible:focus {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
   }
 }
 

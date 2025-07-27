@@ -9,6 +9,8 @@ const Button = React.forwardRef(({
   icon,
   iconPosition = 'left',
   className = '',
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedby,
   ...props
 }, ref) => {
   const baseClasses = 'btn inline-flex items-center justify-center font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
@@ -29,6 +31,9 @@ const Button = React.forwardRef(({
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`
 
+  // Generate aria-label if not provided but icon is present
+  const buttonAriaLabel = ariaLabel || (icon && !children ? 'Button' : undefined)
+
   return (
     <button
       ref={ref}
@@ -36,6 +41,8 @@ const Button = React.forwardRef(({
       disabled={disabled || loading}
       aria-disabled={disabled || loading}
       aria-busy={loading}
+      aria-label={buttonAriaLabel}
+      aria-describedby={ariaDescribedby}
       {...props}
     >
       {loading && (
@@ -45,6 +52,8 @@ const Button = React.forwardRef(({
           fill="none"
           viewBox="0 0 24 24"
           aria-hidden="true"
+          role="img"
+          aria-label="Loading"
         >
           <circle
             className="opacity-25"
@@ -68,7 +77,7 @@ const Button = React.forwardRef(({
         </span>
       )}
 
-      {children}
+      {children && <span>{children}</span>}
 
       {!loading && icon && iconPosition === 'right' && (
         <span className="ml-2" aria-hidden="true">

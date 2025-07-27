@@ -10,6 +10,7 @@ const Input = React.forwardRef(({
   disabled = false,
   placeholder,
   className = '',
+  'aria-describedby': ariaDescribedby,
   ...props
 }, ref) => {
   const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`
@@ -23,6 +24,7 @@ const Input = React.forwardRef(({
   const ariaDescribedBy = []
   if (error) ariaDescribedBy.push(errorId)
   if (helperText) ariaDescribedBy.push(helperId)
+  if (ariaDescribedby) ariaDescribedBy.push(ariaDescribedby)
 
   return (
     <div className="space-y-1">
@@ -45,6 +47,7 @@ const Input = React.forwardRef(({
         aria-disabled={disabled}
         aria-invalid={error ? 'true' : 'false'}
         aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+        aria-required={required}
         placeholder={placeholder}
         {...props}
       />
@@ -54,6 +57,7 @@ const Input = React.forwardRef(({
           id={errorId}
           className="text-sm text-danger"
           role="alert"
+          aria-live="polite"
         >
           {error}
         </p>
